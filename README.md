@@ -26,4 +26,4 @@ https://github.com/kelektiv/node.bcrypt.js/issues/1017
 
 
 ## ⑦質問・疑問・感想、シェアしたいこと等なんでも
-- 
+- やりたいことより仕様理解に時間がかかってしんどいです
