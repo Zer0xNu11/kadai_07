@@ -1,0 +1,33 @@
+async signIn({user, account, profile}){
+  console.log("Sign in attempt", profile?.email)
+  if(account?.provider === 'github'){
+    const existingUser = await prismadb.user.findUnique({
+      where:{email: profile?.email }
+    })
+  try{
+    //新規ユーザーの場合
+    if (!existingUser) {
+      await prismadb.user.create({
+        data: {
+          name: user.name,
+          email: user.email,
+          image: user.image,
+        },
+      })
+      return true
+    }
+
+    }else{ //既存ユーザーの場合
+      await prismadb.user.update({
+        where: { id: existingUser.id },
+        data: {
+        name: profile.name,
+        image: profile.picture,
+        },
+      })
+    } 
+    return true
+  }catch (error) {
+      throw error;
+    }
+},

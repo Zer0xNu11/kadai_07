@@ -1,0 +1,16 @@
+export {auth as middleware} from "@/auth"
+
+// import {auth} from "@/auth";
+// export default auth((req))=>{
+//   const {nextUrl} = req;
+//   const isLoggedIn = !!req.auth;
+// }
+
+
+
+//ミドルウェア適用範囲設定 matcherでマッチするURLでmiddlewareは動作
+export const config = {
+  matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)'],
+};
+
+//Next.js は、エクスポートされたmiddleware関数を自動的にミドルウェアとして認識する
