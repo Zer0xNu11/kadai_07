@@ -58,9 +58,9 @@ export async function signUp(prevState: SignUpState, formData: FormData): Promis
   redirect('/login');
 }
 
-export async function login(formData: FormData) {
+export async function login(prevState: string | undefined, formData: FormData) {
   try {
-    await signIn('credentials', formData); //signIn nextAuthの関数 credentials プロバイダーの種類
+    await signIn('credentials', formData, ({redirectto:'/mypage'})); //signIn nextAuthの関数 credentials プロバイダーの種類
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {
@@ -73,7 +73,6 @@ export async function login(formData: FormData) {
 
     throw error;
   }
-  redirect('/mypage');
 }
 
 
