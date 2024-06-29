@@ -47,7 +47,7 @@ export const authConfig= {
       if (isAuthRoute) {
         //ログイン済みの時リダイレクト
         if (isLoggedIn) {
-          return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, request.nextUrl));
+          return Response.redirect(new URL('mypage', request.nextUrl));
         }
 
         return true;
@@ -55,14 +55,14 @@ export const authConfig= {
 
       
 
-      try{
-        const {pathname} = request.nextUrl; //nextUrl 現在のリクエストのURL情報を表すオブジェクトからpathname(=URL)を分割代入
-        if(pathname === '/mypage') return !!auth;
-        return true;
+      // try{
+      //   const {pathname} = request.nextUrl; //nextUrl 現在のリクエストのURL情報を表すオブジェクトからpathname(=URL)を分割代入
+      //   if(pathname === '/mypage') return !!auth;
+      //   return true;
 
-      }catch(err){
-        console.log(err);
-      }
+      // }catch(err){
+      //   console.log(err);
+      // }
     },
 
   },
